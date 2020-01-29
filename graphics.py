@@ -1,4 +1,3 @@
-# pagesize=1&fromdate=1569888000&todate=1575158400&order=desc&sort=activity&tagged=react&site=stackoverflow&filter=total
 from datetime import datetime, timedelta
 import requests
 import matplotlib.pyplot as plt
@@ -49,6 +48,13 @@ def fetch_data(params: dict):
     return df
 
 
+# Call this function directly if using this script as part of another one (not as a standalone tool).
+# Parameters:
+# from      datetime.datetime
+# to        datetime.datetime
+# step      dateutils.relativedelta
+# tags      array<str>
+# site      str
 def graphics(params: dict):
     data = fetch_data(params)
 
