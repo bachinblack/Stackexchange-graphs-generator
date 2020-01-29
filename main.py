@@ -22,6 +22,10 @@ parser.add_argument('-S', '--site',
     type=str, default='stackoverflow',
     help="The stackexchange platform to look into (default: stackoverflow)."
 )
+parser.add_argument('-T', '--title',
+    type=str, help="The title of the graph",
+    default="Numbers of questions over time"
+)
 
 
 def parse_step(step: str):
@@ -47,5 +51,6 @@ if __name__ == '__main__':
         'from': parse_date(args.fromdate),
         'to': parse_date(args.todate),
         'step': parse_step(args.step),
-        'site': args.site
+        'site': args.site,
+        'title': args.title
     })

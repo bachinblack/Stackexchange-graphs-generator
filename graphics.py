@@ -9,8 +9,8 @@ API_BASE = "https://api.stackexchange.com/2.2/questions?pagesize=1&filter=total&
 
 
 # Display graph.
-def generate_graph(df: object):
-    df.plot(kind='line', title="Numbers of questions over time", grid=True)
+def generate_graph(df: object, title: str):
+    df.plot(kind='line', title=title, grid=True)
     plt.xticks(rotation=-50, ha='left')
     plt.subplots_adjust(bottom=0.24, left=0.1)
     plt.show()
@@ -41,7 +41,7 @@ def fetch_data(params: dict):
             row.append(r.json()['total'])
 
         # Removing the date/time part if unnecessary.
-        index = (str(params['from'].date()) if params['from'].hour == 0 else str(params['from'].time())).replace('-', ' ')
+        index = (str(params['from'].date()) if params['from'].hour == 0 else str(params['from'].time()))
         df.loc[index] = row
         params['from'] = stepped
 
@@ -55,8 +55,9 @@ def fetch_data(params: dict):
 # step      dateutils.relativedelta
 # tags      array<str>
 # site      str
+# title     str
 def graphics(params: dict):
     data = fetch_data(params)
 
     print(data)
-    generate_graph(data)
+    generate_graph(data, params['title'])
