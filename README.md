@@ -48,7 +48,7 @@ I also don't know which is the minimal supported version for the packages. The h
 [logo]: https://github.com/bachinblack/Stackexchange-graphs-generator/blob/master/site/picture.png "Example graph"
 
 
-`python3 main.py c,python,javascript -f 2015-01-01 -t 2020-01-01 -s 1y -x`
+`python3 main.py java,csharp,cpp -f 2012-01-01 -t 2020-01-01 -s 1y -x`
 
 ![alt text][logoxkcd]
 
