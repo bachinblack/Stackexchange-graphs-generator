@@ -9,7 +9,9 @@ API_BASE = "https://api.stackexchange.com/2.2/questions?pagesize=1&filter=total&
 
 
 # Display graph.
-def generate_graph(df: object, title: str):
+def generate_graph(df: object, title: str, xkcd: bool):
+    if xkcd:
+        plt.xkcd()
     df.plot(kind='line', title=title, grid=True)
     plt.xticks(rotation=-50, ha='left')
     plt.subplots_adjust(bottom=0.24, left=0.1)
@@ -60,4 +62,4 @@ def graphics(params: dict):
     data = fetch_data(params)
 
     print(data)
-    generate_graph(data, params['title'])
+    generate_graph(data, params['title'], params['xkcd'])
